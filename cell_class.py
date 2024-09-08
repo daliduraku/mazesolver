@@ -1,4 +1,4 @@
-
+from window_class import Window
 class Cell:
     def __init__(self, x1, y1, x2, y2, window):
         self._x1 = x1
