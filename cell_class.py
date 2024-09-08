@@ -3,7 +3,7 @@ from line_class import (
     Point,
 )
 class Cell:
-    def __init__(self,win):
+    def __init__(self, win):
         self._x1 = None
         self._y1 = None
         self._x2 = None

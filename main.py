@@ -1,15 +1,24 @@
 from window_class import Window
 from cell_class import Cell
-from line_class import (
-    Line,
-    Point,
-
-)
 
 def main():
     win = Window(800, 600)
-    cell = Cell(x1=50, y1=50, x2=100, y2=100, window=win)
-    cell.draw()
+    c = Cell(win)
+    c.has_left_wall = False
+    c.draw(125, 125, 200, 200)
+
+    c = Cell(win)
+    c.has_right_wall = False
+    c.draw(125, 125, 200, 200)
+
+    c = Cell(win)
+    c.has_bottom_wall = False
+    c.draw(225, 225, 250, 250)
+
+    c = Cell(win)
+    c.has_top_wall = False
+    c.draw(300, 300, 500, 500)
+
     win.wait_for_close()
 
 
