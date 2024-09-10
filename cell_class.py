@@ -47,7 +47,7 @@ class Cell:
             self._win.canvas.create_line(x1, y1, x2, y2, fill="red")
         else:
             self._win.canvas.create_line(x1, y1, x2, y2, fill="gray")
-
+        
 
 
 
