@@ -1,5 +1,6 @@
 from cell_class import Cell
-import tkinter as Tk
+import random
+import time
 class Maze:
     def __init__(
             self,
@@ -11,24 +12,42 @@ class Maze:
             cell_size_y,
             win,
     ):
-        self.x1 = x1
-        self.y1 = y1
-        self.num_rows = num_rows
-        self.num_cols = num_cols
-        self.cell_size_x = cell_size_x
-        self.cell_size_y = cell_size_y
-        self.win = win
         self._cells = []
+        self._x1 = x1
+        self._y1 = y1
+        self._num_rows = num_rows
+        self._num_cols = num_cols
+        self._cell_size_x = cell_size_x
+        self._cell_size_y = cell_size_y
+        self._win = win
+        self._create_cells()
 
-    def create_cells(self):
-        for i in range(self.num_rows):
-            inner_list = []
-            for j in range(self.num_cols):
-                inner_list.append(Cell(self.win))
-            self._cells.append(inner_list)
+    def _create_cells(self):
+        # creating an n x m grid 
+        for i in range(self._num_cols):
+            col_cells = []
+            for j in range(self._num_rows):
+                col_cells.append(Cell(self._win))
+            self._cells.append(col_cells)
+        for i in range(self._num_cols):
+            for j in range(self._num_rows):
+                self._draw_cell(i, j)
     
-    def draw_cells(self, i, j):
-        x_position = self.x1 + j * self.cell_size_x
-        y_position = self.y1 + i * self.cell_size_y
-        self.win.canvas.create_rectangle(x_position, y_position, x_position + self.cell_size_x, y_position + self.cell_size_y, outline="black", fill="white")
+    def _draw_cell(self, i, j):
+        # the position of each cell on our screen
+        if self._win is None:
+            return
+        x1 = self._x1 + i * self._cell_size_x
+        y1 = self._y1 + j * self._cell_size_y
+        x2 = x1 + self._cell_size_x
+        y2 = y1 + self._cell_size_y
+        self._cells[i][j].draw(x1, y1, x2, y2)
+        self._animate()
+    
+    def _animate(self):
+        # calling the redraw method from our window class
+        if self._win is None:
+            return
+        self._win.redraw()
+        time.sleep(0.05)
 
