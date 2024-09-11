@@ -1,5 +1,5 @@
 from cell_class import Cell
-
+import tkinter as Tk
 class Maze:
     def __init__(
             self,
