@@ -11,6 +11,8 @@ class Maze:
             cell_size_x,
             cell_size_y,
             win=None,
+            seed=None,
+
     ):
         self._cells = []
         self._x1 = x1
@@ -22,6 +24,9 @@ class Maze:
         self._win = win
         self._create_cells()
         self._break_entrance_and_exit()
+        
+        if seed is not None:
+            random.seed(seed) 
    
     def _create_cells(self):
         # creating an n x m grid 
@@ -56,4 +61,7 @@ class Maze:
         self._draw_cell(0,0)
         self._cells[self._num_cols - 1][self._num_rows - 1].has_bottom_wall = False
         self._draw_cell(self._num_cols - 1, self._num_rows - 1)
+    
+    def _break_walls_r(self, i, j):
+        
 

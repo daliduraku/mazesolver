@@ -1,5 +1,4 @@
 import unittest
-
 from maze_class import Maze
 
 
